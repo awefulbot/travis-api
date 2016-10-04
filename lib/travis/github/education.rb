@@ -32,6 +32,7 @@ module Travis
           remote = GH::Remote.new
           remote.setup('https://education.github.com/api', token: github_oauth_token)
           response = remote.fetch_resource('/user')
+          p "education.github response #{JSON.parse(response.body)}"
           JSON.parse(response.body)
         end
       rescue GH::Error, JSON::ParserError, Timeout::Error => e
