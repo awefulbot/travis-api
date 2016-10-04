@@ -266,6 +266,7 @@ class Travis::Api::App
             if Travis::Features.feature_active?(:education_data_sync) ||
               (user && Travis::Features.owner_active?(:education_data_sync, user))
               info['education'] = education
+              p "------- info['education'] #{info['education']}"
             end
             info['github_id'] ||= data['id']
             info

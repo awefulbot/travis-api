@@ -41,7 +41,8 @@ module Travis
       end
 
       def timeout
-        Travis.config.education_endpoint_timeout || 2
+        #Travis.config.education_endpoint_timeout || 2
+        5
       end
     end
   end
