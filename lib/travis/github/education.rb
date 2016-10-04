@@ -24,25 +24,26 @@ module Travis
       end
 
       def data
-        @data ||= fetch
+        p "---- data method"
+        @data = fetch
       end
 
       def fetch
-        #Timeout::timeout(timeout) do
+        p "---- fetch method #{fetch}"
+        Timeout::timeout(timeout) do
           remote = GH::Remote.new
           remote.setup('https://education.github.com/api', token: github_oauth_token)
           response = remote.fetch_resource('/user')
           p "--------- education.github response #{JSON.parse(response.body)}"
           JSON.parse(response.body)
-        #end
+        end
       rescue GH::Error, JSON::ParserError, Timeout::Error => e
         log_exception(e) unless e.is_a? GH::Error and e.info[:response_status] == 401
         {}
       end
 
       def timeout
-        #Travis.config.education_endpoint_timeout || 2
-        5
+        Travis.config.education_endpoint_timeout || 2
       end
     end
   end
