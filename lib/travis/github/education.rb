@@ -18,6 +18,8 @@ module Travis
       include Travis::Logging
 
       def student?
+        p "--------- data inspect #{data.inspect} "
+        p "--------- student: #{data['student']}"
         data['student']
       end
 
