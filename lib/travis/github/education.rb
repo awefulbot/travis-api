@@ -38,6 +38,7 @@ module Travis
           JSON.parse(response.body)
         end
       rescue GH::Error, JSON::ParserError, Timeout::Error => e
+        p "----- log error #{e.inspect}"
         log_exception(e) unless e.is_a? GH::Error and e.info[:response_status] == 401
         {}
       end
