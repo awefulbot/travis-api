@@ -29,7 +29,7 @@ module Travis
       end
 
       def fetch
-        p "---- fetch method #{fetch}"
+        p "---- fetch method"
         Timeout::timeout(timeout) do
           remote = GH::Remote.new
           remote.setup('https://education.github.com/api', token: github_oauth_token)
