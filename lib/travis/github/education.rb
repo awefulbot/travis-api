@@ -25,7 +25,7 @@ module Travis
 
       def data
         p "---- data method"
-        @data = fetch
+        @data ||= fetch
       end
 
       def fetch
